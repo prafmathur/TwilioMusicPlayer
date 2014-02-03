@@ -1,0 +1,86 @@
+html
+{
+	height: 100%;
+	/* IE10 Consumer Preview */ 
+background-image: -ms-radial-gradient(center, circle farthest-corner, #ADADAD 0%, #454545 100%);
+
+/* Mozilla Firefox */ 
+background-image: -moz-radial-gradient(center, circle farthest-corner, #ADADAD 0%, #454545 100%);
+
+/* Opera */ 
+background-image: -o-radial-gradient(center, circle farthest-corner, #ADADAD 0%, #454545 100%);
+
+/* Webkit (Safari/Chrome 10) */ 
+background-image: -webkit-gradient(radial, center center, 0, center center, 505, color-stop(0, #ADADAD), color-stop(1, #454545));
+
+/* Webkit (Chrome 11+) */ 
+background-image: -webkit-radial-gradient(center, circle farthest-corner, #ADADAD 0%, #454545 100%);
+
+/* W3C Markup, IE10 Release Preview */ 
+background-image: radial-gradient(circle farthest-corner at center, #ADADAD 0%, #454545 100%);
+}
+
+.controlBar
+{
+	margin-top: 5%
+	margin-left: auto;
+	width: 20%
+	margin-right: auto;
+}
+
+
+h1
+{
+	font-family: 'Oswald', sans-serif;
+	color: white;
+	text-align: center;
+	font-weight: bold;
+	font-size: 52px;
+
+}
+
+
+h2
+{
+	font-family: 'Arvo', serif;
+	color: black;
+	text-align: center;
+	font-weight: bold;
+	font-size: 35px;	
+}
+
+.whichSong
+{
+	font-family: 'Arvo', serif;
+	color: black;
+	text-align: center;
+	font-weight: bold;
+	font-size: 25px;
+}
+
+.play
+{
+	margin: 0 auto;
+	height: 128px;
+	width: 128px;
+	background-image:url('play.png');
+}
+
+.play:hover
+{
+	background-image:url('playwhite.png');
+
+}
+
+.pause
+{
+	margin: 0 auto;
+	height: 128px;
+	width: 128px;
+	background-image:url('pause.png');
+}
+
+.pause:hover
+{
+	background-image:url('pausewhite.png');
+}
