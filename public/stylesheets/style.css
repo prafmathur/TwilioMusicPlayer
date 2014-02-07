@@ -1,44 +1,45 @@
 html
 {
 	height: 100%;
-	/* IE10 Consumer Preview */ 
-background-image: -ms-radial-gradient(center, circle farthest-corner, #ADADAD 0%, #454545 100%);
-
-/* Mozilla Firefox */ 
-background-image: -moz-radial-gradient(center, circle farthest-corner, #ADADAD 0%, #454545 100%);
-
-/* Opera */ 
-background-image: -o-radial-gradient(center, circle farthest-corner, #ADADAD 0%, #454545 100%);
-
-/* Webkit (Safari/Chrome 10) */ 
-background-image: -webkit-gradient(radial, center center, 0, center center, 505, color-stop(0, #ADADAD), color-stop(1, #454545));
-
-/* Webkit (Chrome 11+) */ 
-background-image: -webkit-radial-gradient(center, circle farthest-corner, #ADADAD 0%, #454545 100%);
-
-/* W3C Markup, IE10 Release Preview */ 
-background-image: radial-gradient(circle farthest-corner at center, #ADADAD 0%, #454545 100%);
+	  background: url(concert.jpg) no-repeat center center fixed; 
+	  -webkit-background-size: cover;
+	  -moz-background-size: cover;
+	  -o-background-size: cover;
+	  background-size: cover;
 }
 
 .controlBar
 {
-	margin-top: 5%
 	margin-left: auto;
 	width: 20%
 	margin-right: auto;
 }
 
 
-h1
+.title
 {
 	font-family: 'Oswald', sans-serif;
 	color: white;
 	text-align: center;
-	font-weight: bold;
-	font-size: 52px;
-
+	font-size: 72px;
+	margin: 0 auto;
+	background:rgba(0,0,0,0.55);
+	letter-spacing: 22px;
 }
 
+#num
+{
+	/*font-family: 'Oswald', sans-serif;*/
+	letter-spacing: 7px;
+	color: black;
+	background-color: rgba(255,255,255,.5);
+	border: 2px solid black;
+}
+
+.songInfo
+{
+	text-align: center;
+}
 
 h2
 {
@@ -47,16 +48,38 @@ h2
 	text-align: center;
 	font-weight: bold;
 	font-size: 35px;	
+	letter-spacing: 7px;
+
 }
+
+
+
 
 .whichSong
 {
+	font-family: 'Arvo', serif;
+	color: white;
+	text-align: center;
+	font-weight: bold;
+	font-size: 25px;
+	background:rgba(0,0,0,0.55);
+	display: inline-block;
+	border: 2px solid black;
+
+
+}
+
+.nowPlaying
+{
+	display: none;
 	font-family: 'Arvo', serif;
 	color: black;
 	text-align: center;
 	font-weight: bold;
 	font-size: 25px;
 }
+
+
 
 .play
 {
@@ -72,6 +95,23 @@ h2
 
 }
 
+/*.next
+{
+	height: 128px;
+	width: 128px;
+	margin: 0 auto;
+	background-image:url('next.png');
+}
+
+.next:hover
+{
+	background-color: red;
+	height: 128px;
+	width: 128px;
+	margin: 0 auto;
+	background-image:url('next.png');
+}
+*/
 .pause
 {
 	margin: 0 auto;

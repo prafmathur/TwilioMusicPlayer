@@ -1,7 +1,8 @@
 // Once the api loads call enable the search box.
 function handleAPILoaded() {
-  $('#search-button').attr('disabled', false);
+  $('#search-button').attr('disabled', false);  
 }
+
 
 // Search for a given string.
 function search(query, firstSong) {
@@ -9,26 +10,36 @@ function search(query, firstSong) {
     q: query,
     part: 'snippet'
   });
+  var youtubeVideoTitle;
+  var youtubeVideoID;
+  request.execute(function(response){
+    youtubeVideoTitle = response.result.items[0].snippet.title;
+    youtubeVideoID = response.result.items[0].id.videoId;
+    console.log("ID---->"+youtubeVideoID);
 
-  request.execute(function(response) {
-    var str = response.result.items[0].id.videoId;
-    //$('#search-container').html('<pre>' + str + '</pre>');
+    loadSong(youtubeVideoTitle, youtubeVideoID, firstSong);
+  });
+}
+
+
+
+function loadSong(youtubeVideoTitle, youtubeVideoID, firstSong)
+{
+    $(".nowPlaying").show();
+    $(".whichSong").html("&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp" + youtubeVideoTitle + "&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp" );
     var ytplayer;
-
     if(firstSong)
     {
       var params = { allowScriptAccess: "always", hidden: "hidden", autoplay: 1};
       var atts = { id: "myytplayer" };
-      var videoID = str;
-      swfobject.embedSWF("http://www.youtube.com/v/"+videoID+"?autoplay=1&enablejsapi=1&playerapiid=ytplayer&version=3",
+      swfobject.embedSWF("http://www.youtube.com/v/"+youtubeVideoID+"?autoplay=1&enablejsapi=1&playerapiid=ytplayer&version=3",
                          "ytapiplayer", "0", "0", "8", null, null, params, atts);
-      
       ytplayer = document.getElementById("myytplayer");
     }
     else
     {
       ytplayer = document.getElementById("myytplayer");
-      ytplayer.loadVideoById(str);
+      ytplayer.loadVideoById(youtubeVideoID);
     }
 
     var playing = true;
@@ -59,13 +70,4 @@ function search(query, firstSong) {
         console.log("No song loaded")
       }
     });
-    // $("#vid").attr('src', "http://www.youtube.com/embed/" + str + '?autoplay=1');
-    // $("#vid").load();
-  });
 }
-
-
-
-
-/// Do a rest call for message list every 25 seconds with param dateSent > currentTime
-/// take the body of the first response and play that song
