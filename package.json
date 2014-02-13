@@ -1,0 +1,24 @@
+{
+  "name": "TextJam",
+  "version": "0.1.0",
+  "description": "A text message based music player",
+  "main": "app.js",
+  "dependencies": {
+    "jade": "~1.1.5",
+    "express": "~3.4.8"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "node app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/prafmathur/TwilioMusicPlayer.git"
+  },
+  "keywords": [
+    "TextJam"
+  ],
+  "author": "Praful Mathur",
+  "license": "BSD",
+  "gitHead": "28dc044518204109cd59d5a9d038ad8aa00756c5"
+}
