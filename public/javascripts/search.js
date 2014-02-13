@@ -1,6 +1,21 @@
 // Once the api loads call enable the search box.
+
+queue = {
+  songs:[],
+  size:0,
+  currentSong:0
+}
+
+
 function handleAPILoaded() {
   $('#search-button').attr('disabled', false);  
+}
+
+function outputQ()
+{
+  for (var i = queue.songs.length - 1; i >= 0; i--) {
+    console.log("Title: " + queue.songs[i].title + "Id: " + queue.songs[i].ID);
+  }
 }
 
 
@@ -16,15 +31,23 @@ function search(query, firstSong) {
     youtubeVideoTitle = response.result.items[0].snippet.title;
     youtubeVideoID = response.result.items[0].id.videoId;
     console.log("ID---->"+youtubeVideoID);
-
+    var aSong = new Object();
+    aSong.title = youtubeVideoTitle;
+    aSong.ID = youtubeVideoID;
+    queue.songs.push(aSong);
+    queue.size++;
+    outputQ();
     loadSong(youtubeVideoTitle, youtubeVideoID, firstSong);
   });
 }
 
 
 
+
+
 function loadSong(youtubeVideoTitle, youtubeVideoID, firstSong)
 {
+    queue.currentSong++;
     $(".nowPlaying").show();
     $(".whichSong").html("&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp" + youtubeVideoTitle + "&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp" );
     var ytplayer;
@@ -40,6 +63,8 @@ function loadSong(youtubeVideoTitle, youtubeVideoID, firstSong)
     {
       ytplayer = document.getElementById("myytplayer");
       ytplayer.loadVideoById(youtubeVideoID);
+      queue.currentSong++;
+      console.log("currenly at " + queue.currentSong);
     }
 
     var playing = true;
