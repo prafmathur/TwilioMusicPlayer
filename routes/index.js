@@ -13,18 +13,19 @@ var client = require('../node_modules/twilio')(accountSid, authToken);
 
 exports.index = function(req, res){
 
-	var message;;
+	var message;
 	console.log("waiting for response....")
-	client.messages.list(function(err, data) {
-		if(data == null)
-		{
-			console.log("empty")
-		}
-	    else
-	    {
-	    	console.log(data.messages[0].body);
-	    	message = data.messages[0].body;
-		    res.render('index');
-	    }
-	});
+	// client.messages.list(function(err, data) {
+	// 	if(data == null)
+	// 	{
+	// 		console.log("empty")
+	// 	}
+	//     else
+	//     {
+	//     	console.log(data.messages[0].body);
+	//     	message = data.messages[0].body;
+	// 	    res.render('index');
+	//     }
+	// });
+	res.render('index');
 };

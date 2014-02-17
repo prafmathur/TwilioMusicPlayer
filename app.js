@@ -31,13 +31,18 @@ if ('development' == app.get('env')) {
   app.use(express.errorHandler());
 }
 
+
+postedSong = "";
+
 app.get('/', routes.index);
 app.get('/users', user.list);
 app.get('/recentSong', recentSong.print);
 
 app.post('/getLastMessage', function(req, res)
 {
-
+	postedSong = req.body.body;
+	console.log(req.body.body);
+	res.end();
 });
 
 
