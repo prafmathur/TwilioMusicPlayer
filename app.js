@@ -41,7 +41,7 @@ app.get('/recentSong', recentSong.print);
 app.post('/getLastMessage', function(req, res)
 {
 	postedSong = req.body.body;
-	console.log(req.body.body);
+	console.log(req.body);
 	res.end();
 });
 
