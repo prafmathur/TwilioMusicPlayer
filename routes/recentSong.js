@@ -7,11 +7,17 @@ var client = require('../node_modules/twilio')(accountSid, authToken);
 
 exports.print = function(req, res){
   	var recentSong = postedSong;
-	console.log("waiting for response....")
+	res.send(recentSong);
+};
+
+
+
+//------------------------------------------------------
+//				Depreciated Code
+//------------------------------------------------------
+	// console.log("waiting for response....")
 	// client.messages.list(function(err, data) {
 	//     console.log(data.messages[0].body);
 	//     recentSong = data.messages[0].body;
 	// 	res.send(recentSong);
 	// });
-	res.send(recentSong);
-};
