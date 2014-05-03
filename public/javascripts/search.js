@@ -23,8 +23,12 @@ function outputQ()
 function next()
 {
       console.log("Next song...")
-      queue.currentSong++;
-      var curSong = queue.songs[queue.songs.currentSong];
+      var curSong = queue.songs[queue.songs.currentSong+1];
+      if(curSong === undefined)
+      {
+        console.log("No more songs in queue")
+        return;
+      }
       console.log(curSong);
       loadSong(curSong.title, curSong.ID, false);
 }
