@@ -7,13 +7,7 @@ function main()
 	var lastQueuedSong;
 	$.get('/recentSong', function(data)
 	{
-		$(".next").click(function(){
-			console.log("Next song...")
-			queue.currentSong++;
-			var curSong = queue.songs[queue.songs.currentSong];
-			loadSong(curSong.title, curSong.ID, false);
-		});
-		
+		$(".next").click(next);
 		console.log(data);
 		lastQueuedSong = data;
 	})

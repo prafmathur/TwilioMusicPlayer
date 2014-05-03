@@ -13,11 +13,21 @@ function handleAPILoaded() {
 
 function outputQ()
 {
+
   for (var i = queue.songs.length - 1; i >= 0; i--) {
-    console.log("Title: " + queue.songs[i].title + "Id: " + queue.songs[i].ID);
+    console.log("Title: " + queue.songs[i].title + "  Id: " + queue.songs[i].ID);
   }
+  console.log("Current Song Index: " + queue.currentSong);
 }
 
+function next()
+{
+      console.log("Next song...")
+      queue.currentSong++;
+      var curSong = queue.songs[queue.songs.currentSong];
+      console.log(curSong);
+      loadSong(curSong.title, curSong.ID, false);
+}
 
 // Search for a given string.
 function search(query, firstSong) {
