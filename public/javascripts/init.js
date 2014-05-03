@@ -4,15 +4,16 @@ function main()
 {
 	//get last queued song
 	$(".player").hide();
-	$(".next").click(function(){
-		console.log("Next song...")
-		queue.currentSong++;
-		var curSong = queue.songs[queue.songs.currentSong];
-		loadSong(curSong.title, curSong.ID, 0);
-	});
 	var lastQueuedSong;
 	$.get('/recentSong', function(data)
 	{
+		$(".next").click(function(){
+			console.log("Next song...")
+			queue.currentSong++;
+			var curSong = queue.songs[queue.songs.currentSong];
+			loadSong(curSong.title, curSong.ID, false);
+		});
+		
 		console.log(data);
 		lastQueuedSong = data;
 	})
