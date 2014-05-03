@@ -37,17 +37,16 @@ function search(query, firstSong) {
     queue.songs.push(aSong);
     queue.size++;
     outputQ();
-    loadSong(youtubeVideoTitle, youtubeVideoID, firstSong);
+    if(firstSong)
+    {
+      loadSong(youtubeVideoTitle, youtubeVideoID, firstSong);
+    }
   });
 }
 
 
-
-
-
 function loadSong(youtubeVideoTitle, youtubeVideoID, firstSong)
 {
-    queue.currentSong++;
     $(".nowPlaying").show();
     $(".whichSong").html("&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp" + youtubeVideoTitle + "&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp" );
     var ytplayer;

@@ -95,7 +95,7 @@ h2
 
 }
 
-/*.next
+.next
 {
 	height: 128px;
 	width: 128px;
@@ -111,7 +111,7 @@ h2
 	margin: 0 auto;
 	background-image:url('next.png');
 }
-*/
+
 .pause
 {
 	margin: 0 auto;
