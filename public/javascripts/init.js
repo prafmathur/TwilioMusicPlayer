@@ -24,8 +24,15 @@ function main()
 			if (lastQueuedSong != data)
 			{
 				lastQueuedSong = data;
-				search(lastQueuedSong, firstSong);
-				firstSong = false;
+				if(data.substring(0,4) === "next")
+				{
+					next();
+				}
+				else
+				{	
+					search(lastQueuedSong, firstSong);
+					firstSong = false;
+				}
 			}	
 		  },
 		});

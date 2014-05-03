@@ -35,6 +35,16 @@ function next()
       loadSong(curSong.title, curSong.ID, false);
 }
 
+function updateList()
+{
+  var listHtml = "";
+  for (var i = queue.currentSong; i < queue.songs.length; i++) {
+    listHtml += "<li>" + queue.songs[i].title + "</li>"
+    
+  };
+}
+
+
 // Search for a given string.
 function search(query, firstSong) {
   var request = gapi.client.youtube.search.list({

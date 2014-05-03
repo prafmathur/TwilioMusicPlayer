@@ -40,6 +40,11 @@ app.get('/recentSong', recentSong.print);
 app.post('/getLastMessage', function(req, res)
 {
 	postedSong = req.body.Body;
+	if(postedSong === "next")
+	{
+		var now = new Date().getTime().toString();
+		postedSong+=now;
+	}
 	console.log(req.body);
 	res.end();
 });
