@@ -118,6 +118,8 @@ h2
 .pause
 {
 	margin: 0 auto;
+	float: left;
+	margin-left: 37%;
 	height: 128px;
 	width: 128px;
 	background-image:url('pause.png');

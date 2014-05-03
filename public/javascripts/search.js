@@ -40,8 +40,8 @@ function updateList()
   var listHtml = "";
   for (var i = queue.currentSong; i < queue.songs.length; i++) {
     listHtml += "<li>" + queue.songs[i].title + "</li>"
-    
   };
+  $(".songList").append(listHtml);
 }
 
 
@@ -63,6 +63,7 @@ function search(query, firstSong) {
     queue.songs.push(aSong);
     queue.size++;
     outputQ();
+    updateList();
     if(firstSong)
     {
       loadSong(youtubeVideoTitle, youtubeVideoID, firstSong);
@@ -73,6 +74,7 @@ function search(query, firstSong) {
 
 function loadSong(youtubeVideoTitle, youtubeVideoID, firstSong)
 {
+    updateList();
     $(".nowPlaying").show();
     $(".whichSong").html("&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp" + youtubeVideoTitle + "&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp" );
     var ytplayer;
