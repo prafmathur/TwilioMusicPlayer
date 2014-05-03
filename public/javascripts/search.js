@@ -72,7 +72,6 @@ function loadSong(youtubeVideoTitle, youtubeVideoID, firstSong)
     {
       ytplayer = document.getElementById("myytplayer");
       ytplayer.loadVideoById(youtubeVideoID);
-      queue.currentSong++;
       console.log("currenly at " + queue.currentSong);
     }
 
