@@ -44,6 +44,10 @@ function updateList()
   };
   $(".songList").empty(listHtml);
   $(".songList").append(listHtml);
+  if(listHtml === "")
+    $(".songTable").hide();
+  else
+    $(".songTable").show();
 }
 
 
@@ -73,6 +77,13 @@ function search(query, firstSong) {
   });
 }
 
+function endedVideo(state)
+{
+  if(state === 0)
+  {
+    next();
+  }
+}
 
 function loadSong(youtubeVideoTitle, youtubeVideoID, firstSong)
 {
@@ -87,11 +98,13 @@ function loadSong(youtubeVideoTitle, youtubeVideoID, firstSong)
       swfobject.embedSWF("http://www.youtube.com/v/"+youtubeVideoID+"?autoplay=1&enablejsapi=1&playerapiid=ytplayer&version=3",
                          "ytapiplayer", "0", "0", "8", null, null, params, atts);
       ytplayer = document.getElementById("myytplayer");
+      ytplayer.addEventListener("onStateChange", "endedVideo");
     }
     else
     {
       ytplayer = document.getElementById("myytplayer");
       ytplayer.loadVideoById(youtubeVideoID);
+      ytplayer.addEventListener("onStateChange", "endedVideo");
       console.log("currenly at " + queue.currentSong);
     }
 
@@ -123,4 +136,5 @@ function loadSong(youtubeVideoTitle, youtubeVideoID, firstSong)
         console.log("No song loaded")
       }
     });
+
 }
