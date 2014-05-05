@@ -39,7 +39,7 @@ function updateList()
 {
   var listHtml = "";
 
-  for (var i = queue.currentSong; i < queue.songs.length; i++) {
+  for (var i = queue.currentSong+1; i < queue.songs.length; i++) {
     listHtml += "<li>" + queue.songs[i].title + "</li>"
   };
   $(".songList").empty(listHtml);

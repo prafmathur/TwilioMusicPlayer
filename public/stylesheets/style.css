@@ -1,7 +1,7 @@
 html
 {
 	height: 100%;
-	  background: url(speakers.jpg) no-repeat center center fixed; 
+	  background: url(concert.jpg) no-repeat center center fixed; 
 	  -webkit-background-size: cover;
 	  -moz-background-size: cover;
 	  -o-background-size: cover;
@@ -23,32 +23,31 @@ html
 	text-align: center;
 	font-size: 72px;
 	margin: 0 auto;
-	background:rgba(0,0,0,0.55);
+	background:rgba(0,0,0,0.70);
 	letter-spacing: 22px;
 }
 
 #num
 {
-	/*font-family: 'Oswald', sans-serif;*/
+	font-family: 'Oswald', sans-serif;
 	letter-spacing: 7px;
-	color: white;
+	color: black;
 	background-color: rgba(255,255,255,.5);
-	border: 2px solid white;
+	border: 2px solid black;
 }
 
 .songInfo
 {
-	margin-top: 10%;
 	text-align: center;
-
 }
+
 
 h2
 {
-	font-family: 'Arvo', serif;
-	color: white;
+	font-family: 'Oswald', sans-serif;
+	color: black;
 	text-align: center;
-	font-weight: bold;
+	font-weight: 100;
 	font-size: 35px;	
 	letter-spacing: 7px;
 
@@ -59,45 +58,50 @@ h2
 
 .whichSong
 {
-	font-family: 'Arvo', serif;
+	list-style: none;
+	font-family: 'Helvetica', serif;
+	width: 30%;
+	margin: 0 auto;
 	color: white;
-	text-align: center;
-	font-size: 25px;
+	font-weight: 100;
 	background:rgba(0,0,0,0.55);
-	display: inline-block;
-	border: 2px solid white;
+	padding: 20px;
+	border: 1px solid white;
 }
 
 .songTable
 {
 	color: white;
-
 	width: 100%;
 	display: inline-block;
-	text-align: center;
 }
 .marj
 {
 	width: 100%;
-	margin-left: -20px;
-}
-.nextTitle
-{
-	text-decoration: underline;
-	font-family: 'Arvo', serif;
-	width: 30%;
-	margin: 0 auto;
-	font-size: 24px;
+	display: inline-block;
 }
 
 .songList
 {
 	list-style: none;
-	font-family: 'Arvo', serif;
+	font-family: 'Helvetica', serif;
 	width: 30%;
 	margin: 0 auto;
+	color: white;
+	font-weight: 100;
+	background:rgba(0,0,0,0.55);
+	padding: 20px;
+
 }
 
+.songList li
+{
+	padding: 5px;
+	text-align: center;
+	font-size: 1em;
+	height: 1.5em;
+	border-bottom: 1px solid white;
+}
 
 .nowPlaying
 {
