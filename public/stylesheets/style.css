@@ -1,7 +1,7 @@
 html
 {
 	height: 100%;
-	  background: url(concert.jpg) no-repeat center center fixed; 
+	  background: url(roxbackground.jpg) no-repeat center center fixed;
 	  -webkit-background-size: cover;
 	  -moz-background-size: cover;
 	  -o-background-size: cover;
@@ -50,7 +50,7 @@ h2
 	color: black;
 	text-align: center;
 	font-weight: 100;
-	font-size: 35px;	
+	font-size: 35px;
 	letter-spacing: 7px;
 
 }
@@ -107,7 +107,7 @@ h2
 .nowPlaying
 {
 	display: none;
-	
+
 	text-align: left;
 	font-family: 'Arvo', serif;
 	color: black;
@@ -127,10 +127,21 @@ h2
 	background-image:url('play.png');
 }
 
+.logo{
+	background-image:url('jamz.png')
+}
+
 .play:hover
 {
 	background-image:url('playwhite.png');
 
+}
+
+img
+{
+	height: 100px;
+	width: 100px;
+	float: right;
 }
 
 .next
@@ -139,7 +150,7 @@ h2
 	width: 128px;
 	margin: 0 auto;
 	float: left;
-	margin-left: 5%; 
+	margin-left: 5%;
 	background-image:url('next.png');
 }
 

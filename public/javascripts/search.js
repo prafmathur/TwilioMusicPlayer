@@ -6,9 +6,12 @@ queue = {
   currentSong:0
 }
 
+loaded = false
 
 function handleAPILoaded() {
-  $('#search-button').attr('disabled', false);  
+  $('#search-button').attr('disabled', false);
+  console.log("Handed API Loaded")
+  loaded = true
 }
 
 function outputQ()
@@ -53,6 +56,10 @@ function updateList()
 
 // Search for a given string.
 function search(query, firstSong) {
+  if(loaded === false)
+  {
+    setTimeout(search, 5000);
+  }
   var request = gapi.client.youtube.search.list({
     q: query,
     part: 'snippet'
@@ -60,6 +67,7 @@ function search(query, firstSong) {
   var youtubeVideoTitle;
   var youtubeVideoID;
   request.execute(function(response){
+    console.log(response)
     youtubeVideoTitle = response.result.items[0].snippet.title;
     youtubeVideoID = response.result.items[0].id.videoId;
     console.log("ID---->"+youtubeVideoID);
