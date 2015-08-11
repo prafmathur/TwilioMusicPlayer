@@ -4,14 +4,8 @@
  */
 
 var express = require('express');
-var routes = require('./routes');
-var user = require('./routes/user');
-var recentSong = require('./routes/recentSong');
 var http = require('http');
 var path = require('path');
-
-
-
 var app = express();
 
 // all environments
@@ -34,9 +28,14 @@ if ('development' == app.get('env')) {
 
 postedSong = "";
 
-app.get('/', routes.index);
-app.get('/users', user.list);
-app.get('/recentSong', recentSong.print);
+app.get('/', function(req, res) {
+	res.render('index');
+});
+
+app.get('/getLastMessage', function(req, res) {
+	res.end(postedSong);
+});
+
 app.post('/getLastMessage', function(req, res)
 {
 	postedSong = req.body.Body;
@@ -44,12 +43,11 @@ app.post('/getLastMessage', function(req, res)
 	{
 		var now = new Date().getTime().toString();
 		postedSong = postedSong.toLowerCase();
-		postedSong+=now;
+		postedSong += now;
 	}
 	console.log(req.body);
 	res.end();
 });
-
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));

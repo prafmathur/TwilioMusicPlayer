@@ -1,9 +1,74 @@
-html
+html, body {
+	height: 98%;
+}
+
+.header {
+	height: 8%;
+}
+
+
+div {
+/*	border: 1px solid black;*/
+	padding: 1px;
+	-webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.content {
+	height: 92%;
+}
+
+.playercontainer {
+	background-color: black;
+	border: 1px solid darkred;
+	float: left;
+	width: 80%;
+	height: 100%;
+}
+
+.songInfo {
+	text-align: center;
+	font-family: 'Oswald', sans-serif;
+	color: white;
+	font-size: 30px;
+	height: 10%;
+}
+
+.queuecontainer {
+	border: 1px solid blue;
+	float: left;
+	width: 20%;
+	height: 100%;	  
+}
+
+.title {
+	width: 30%;
+	float: left;
+	text-align: center;
+	font-family: 'Oswald', sans-serif;
+	font-size: 50px;
+	letter-spacing: 14px;
+}
+
+.textasong {
+	width: 70%;
+	text-align: center;
+	float: left;
+}
+
+li {
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+/*html
 {
 	height: 100%;
 	  background: url(concert.jpg) no-repeat center center fixed;
 	  -webkit-background-size: cover;
-	  -moz-background-size: cover;
+	  -moz-background-size: cr;
 	  -o-background-size: cover;
 	  background-size: cover;
 }
@@ -66,6 +131,8 @@ h2
 	margin: 0 auto;
 	color: white;
 }
+
+
 
 .songTable
 {
@@ -173,4 +240,4 @@ img
 .pause:hover
 {
 	background-image:url('pausewhite.png');
-}
+}*/

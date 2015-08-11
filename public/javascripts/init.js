@@ -1,41 +1,45 @@
 $( document ).ready( main() );
 
-function main()
-{
-	//get last queued song
-	$(".player").hide();
-	var lastQueuedSong;
-	$.get('/recentSong', function(data)
-	{
-		$(".next").click(next);
-		console.log(data);
-		lastQueuedSong = data;
+
+function main() {
+
+	// Get the last queued song ever
+	$.get('/getLastMessage', function(songName) {
+
+		// Initialize UI for next button
+		$("next").click(next);
+
+		console.log(songName);
+		lastQueuedSong = songName;
 	})
+
 	var firstSong = true;
-	setInterval(function()
- 	{	
-		console.log("Checking for message....")
+
+	// Create loop to check for updates to the song every 3 seconds
+	setInterval(function() {
+		console.log("Checking for texts");
+
 		$.ajax({
 		  type: "GET",
-		  ifModified: false,
-		  url: "/recentSong",
-		  success: function (data) {
-		    console.log(data);
-			if (lastQueuedSong != data)
-			{
-				lastQueuedSong = data;
-				if(data.substring(0,4) === "next")
-				{
-					next();
+		  ifModified: false, // Only if different song was played at a different time
+		  url: "/getLastMessage",
+		  success: function (songNameOrCommand) {
+		    console.log(songNameOrCommand);
+				if (lastQueuedSong != songNameOrCommand) {
+					lastQueuedSong = songNameOrCommand;
+					if(songNameOrCommand.substring(0,4) === "next") {
+						next();
+					}
+					else {	
+						search(lastQueuedSong, firstSong);
+						firstSong = false;
+						return;
+					}
 				}
-				else
-				{	
-					search(lastQueuedSong, firstSong);
-					firstSong = false;
-				}
-			}	
 		  },
 		});
+
 	}, 3000)
 }
+
 

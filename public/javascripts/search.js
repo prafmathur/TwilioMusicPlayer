@@ -56,8 +56,7 @@ function updateList()
 
 // Search for a given string.
 function search(query, firstSong) {
-  if(loaded === false)
-  {
+  if(loaded === false) {
     setTimeout(search, 5000);
   }
   var request = gapi.client.youtube.search.list({
@@ -70,7 +69,7 @@ function search(query, firstSong) {
     console.log(response)
     youtubeVideoTitle = response.result.items[0].snippet.title;
     youtubeVideoID = response.result.items[0].id.videoId;
-    console.log("ID---->"+youtubeVideoID);
+    console.log("ID: "+ youtubeVideoID);
     var aSong = new Object();
     aSong.title = youtubeVideoTitle;
     aSong.ID = youtubeVideoID;
@@ -78,71 +77,47 @@ function search(query, firstSong) {
     queue.size++;
     outputQ();
     updateList();
-    if(firstSong)
-    {
+    if(firstSong) {
       loadSong(youtubeVideoTitle, youtubeVideoID, firstSong);
     }
   });
 }
 
-function endedVideo(state)
-{
-  if(state === 0)
-  {
+function endedVideo(state) {
+  if(state === 0) {
     next();
   }
+}
+
+function onPlayerReady(event) {
+  console.log("Youtube Player is ready")
 }
 
 function loadSong(youtubeVideoTitle, youtubeVideoID, firstSong)
 {
     updateList();
     $(".nowPlaying").show();
-    $(".whichSong").html("&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp" + youtubeVideoTitle + "&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp" );
-    var ytplayer;
-    if(firstSong)
+    $(".whichSong").html(youtubeVideoTitle);
+    if (firstSong) 
     {
-      var params = { allowScriptAccess: "always", hidden: "hidden", autoplay: 1};
-      var atts = { id: "myytplayer" };
-      swfobject.embedSWF("http://www.youtube.com/v/"+youtubeVideoID+"?autoplay=1&enablejsapi=1&playerapiid=ytplayer&version=3",
-                         "ytapiplayer", "0", "0", "8", null, null, params, atts);
-      ytplayer = document.getElementById("myytplayer");
-      ytplayer.addEventListener("onStateChange", "endedVideo");
-    }
-    else
-    {
-      ytplayer = document.getElementById("myytplayer");
-      ytplayer.loadVideoById(youtubeVideoID);
-      ytplayer.addEventListener("onStateChange", "endedVideo");
-      console.log("currenly at " + queue.currentSong);
-    }
-
-    var playing = true;
-    $("#playpause").removeClass('play');
-    $("#playpause").addClass('pause');
-    $("#playpause").click(function()
-    {
-      if(ytplayer)
-      {
-        if(!playing)
-        {
-          ytplayer.playVideo();
-          playing = true;
-          $("#playpause").removeClass('play');
-          $("#playpause").addClass('pause');
+      player = new YT.Player('player', {
+        width: $(".playercontainer").width(),
+        height: $(".playercontainer").height()*.85,
+        videoId: youtubeVideoID,
+        playerVars: {
+          autoplay: 1,
+          controls: 0,
+          fs: 0,
+          iv_load_policy: 3,
+          modestbranding: 1,
+          showinfo: 0
+        },
+        events: {
+          'onReady': onPlayerReady,
         }
-        else
-        {
-          ytplayer.pauseVideo();
-          playing = false;
-          $("#playpause").removeClass('pause');
-          $("#playpause").addClass('play');
-
-        }
-      }
-      else
-      {
-        console.log("No song loaded")
-      }
-    });
-
+      });
+    }
+    else {
+      player.loadVideoById(youtubeVideoID);
+    }
 }
