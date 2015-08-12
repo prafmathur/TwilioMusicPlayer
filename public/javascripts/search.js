@@ -35,11 +35,12 @@ function next()
         return;
       }
       console.log(curSong);
-      loadSong(curSong.title, curSong.ID, false);
+      loadSong(curSong.title, curSong.videoId, false);
 }
 
 function updateList()
 {
+  outputQ();
   var listHtml = "";
 
   for (var i = queue.currentSong+1; i < queue.songs.length; i++) {
@@ -63,22 +64,18 @@ function search(query, firstSong) {
     q: query,
     part: 'snippet'
   });
-  var youtubeVideoTitle;
-  var youtubeVideoID;
+
+
   request.execute(function(response){
-    console.log(response)
-    youtubeVideoTitle = response.result.items[0].snippet.title;
-    youtubeVideoID = response.result.items[0].id.videoId;
-    console.log("ID: "+ youtubeVideoID);
-    var aSong = new Object();
-    aSong.title = youtubeVideoTitle;
-    aSong.ID = youtubeVideoID;
-    queue.songs.push(aSong);
+    var song = new Object();
+    song.title = response.result.items[0].snippet.title;
+    song.videoId = response.result.items[0].id.videoId;
+    queue.songs.push(song);
     queue.size++;
-    outputQ();
     updateList();
+
     if(firstSong) {
-      loadSong(youtubeVideoTitle, youtubeVideoID, firstSong);
+      loadSong(song, firstSong);
     }
   });
 }
@@ -93,17 +90,17 @@ function onPlayerReady(event) {
   console.log("Youtube Player is ready")
 }
 
-function loadSong(youtubeVideoTitle, youtubeVideoID, firstSong)
+function loadSong(song, firstSong)
 {
     updateList();
     $(".nowPlaying").show();
-    $(".whichSong").html(youtubeVideoTitle);
+    $(".whichSong").html(song.title);
     if (firstSong) 
     {
       player = new YT.Player('player', {
         width: $(".playercontainer").width(),
         height: $(".playercontainer").height()*.85,
-        videoId: youtubeVideoID,
+        videoId: song.videoId,
         playerVars: {
           autoplay: 1,
           controls: 0,
