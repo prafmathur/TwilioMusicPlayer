@@ -14,32 +14,28 @@ function handleAPILoaded() {
   loaded = true
 }
 
-function outputQ()
-{
-
+function outputQ() {
   for (var i = queue.songs.length - 1; i >= 0; i--) {
     console.log("Title: " + queue.songs[i].title + "  Id: " + queue.songs[i].ID);
   }
   console.log("Current Song Index: " + queue.currentSong);
 }
 
-function next()
-{
-      console.log("Next song...")
-      queue.currentSong++;
-      var curSong = queue.songs[queue.currentSong];
-      if(curSong === undefined)
-      {
-        queue.currentSong--;
-        console.log("No more songs in queue")
-        return;
-      }
-      console.log(curSong);
-      loadSong(curSong.title, curSong.videoId, false);
+function next() {
+  console.log("Next song...")
+  queue.currentSong++;
+  var curSong = queue.songs[queue.currentSong];
+  if(curSong === undefined)
+  {
+    queue.currentSong--;
+    console.log("No more songs in queue")
+    return;
+  }
+  console.log(curSong);
+  loadSong(curSong, false);
 }
 
-function updateList()
-{
+function updateList() {
   outputQ();
   var listHtml = "";
 
@@ -90,8 +86,7 @@ function onPlayerReady(event) {
   console.log("Youtube Player is ready")
 }
 
-function loadSong(song, firstSong)
-{
+function loadSong(song, firstSong) {
     updateList();
     $(".nowPlaying").show();
     $(".whichSong").html(song.title);
@@ -115,6 +110,7 @@ function loadSong(song, firstSong)
       });
     }
     else {
-      player.loadVideoById(youtubeVideoID);
+      console.log("Now about to play " + song.title)
+      player.loadVideoById(song.videoId);
     }
 }
