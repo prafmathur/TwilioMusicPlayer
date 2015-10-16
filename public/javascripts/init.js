@@ -1,15 +1,23 @@
 $( document ).ready( main() );
 
+// var apiKey;
+
 
 function main() {
 	var firstSong = true;
 	var socket = io();
 
+	// socket.on('getApiKey', function(key){
+
+	// 	console.log(key)
+	// 	apiKey = key;
+	// }) 
+
 	socket.on('textRecieved', function (songNameOrCommand) {		
 		// Initialize UI for next button
-		$("next").click(next);
+		$(".nextButton").click(next);
 
-    console.log(songNameOrCommand);
+    	console.log(songNameOrCommand);
 		if(songNameOrCommand.substring(0,4) === "next") {
 			next();
 		}

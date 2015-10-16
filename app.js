@@ -43,6 +43,12 @@ app.post('/getLastMessage', function(req, res)
 	res.end();
 });
 
+// io.on('connection', function(socket) {
+// 	var apiKey = 'AIzaSyCy__w9n9hjn3ZVWBWTu1ImokklKz9OYOE';
+// 	console.log("Sent API Key");
+// 	socket.emit('getApiKey', apiKey)
+// })
+
 
 server.listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));

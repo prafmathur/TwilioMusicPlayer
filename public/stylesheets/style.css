@@ -1,67 +1,146 @@
 html, body {
 	height: 98%;
+	color: white;
+	background-color: black;
+	margin: 0;
 }
 
 .header {
+/*	margin-top: -7px;
+	margin-left: -7px;
+	margin-right: -7px;*/
 	height: 8%;
 }
 
 
 div {
 /*	border: 1px solid black;*/
-	padding: 1px;
+/*	padding: 1px;
 	-webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
-    box-sizing: border-box;
+    box-sizing: border-box;*/
 }
+
+ol {
+	-webkit-padding-start: 0;
+}
+
 
 .content {
 	height: 92%;
-}
+/*	margin-right: -7px;
+*/}
 
 .playercontainer {
 	background-color: black;
-	border: 1px solid darkred;
 	float: left;
 	width: 80%;
 	height: 100%;
 }
 
-.songInfo {
+.songInfo{
+	padding: 20px;
 	text-align: center;
-	font-family: 'Oswald', sans-serif;
+	vertical-align: middle;
+	font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
 	color: white;
 	font-size: 30px;
 	height: 10%;
+	margin-top: 5px;
 }
+
+.whichSong {
+	white-space: nowrap;
+	overflow: ellipsis;
+}
+
 
 .queuecontainer {
-	border: 1px solid blue;
+	color: white;
+	background-color: #4A6992;
+	position: relative;
 	float: left;
 	width: 20%;
-	height: 100%;	  
+	height: 100%;
+	padding-right: -7px;
 }
 
-.title {
+.songTable {
+	height: 80%;
+	overflow-y: auto;
+}
+
+.title{
 	width: 30%;
 	float: left;
 	text-align: center;
 	font-family: 'Oswald', sans-serif;
-	font-size: 50px;
+	text-transform: uppercase;
+	font-size: 40px;
+	line-height: 60px;	
 	letter-spacing: 14px;
+	background-color:  #2A3446;
+
 }
 
 .textasong {
 	width: 70%;
 	text-align: center;
 	float: left;
+	background-color: #4A6992;
+	font-family: 'Oswald', sans-serif;
+	text-transform: uppercase;
+	line-height: 60px;
+	color: black;	
+	font-size: 25px;
+}
+
+.number {
+	color: white;
 }
 
 li {
+	padding-left: 10px;
+	font-family: 'Oswald', sans-serif;
+   	font-weight: 300;	
+   	font-size: 13px;
+   	text-transform: uppercase;
 	white-space: nowrap;
 	overflow: hidden;
 	text-overflow: ellipsis;
+	line-height: 30px;
 }
+
+.tableTitle {
+	width: 100%;
+	text-align: center;
+	line-height: 35px;
+	font-family: 'Oswald', sans-serif;
+	background-color: #2A3446;
+	letter-spacing: 4px;
+}
+
+.nextButton {
+	color: #4A6992;
+	width: 100%;
+	line-height: 50px;
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	height: 50px;
+	font-family: 'Oswald', sans-serif;
+	letter-spacing: 4px;
+	text-transform: uppercase;
+	background-color: white;
+	text-align: center;
+}
+
+.nextButton:hover {
+	color: white;
+	background-color: #2A3446;
+	cursor: pointer;
+}
+
 
 /*html
 {
