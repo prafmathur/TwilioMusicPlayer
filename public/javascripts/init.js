@@ -14,8 +14,9 @@ function main() {
 	// }) 
 
 	socket.on('textRecieved', function (songNameOrCommand) {		
-		// Initialize UI for next button
-		$(".nextButton").click(next);
+    	if (firstSong) {
+    		$(".nextButton").click(next);
+    	}
 
     	console.log(songNameOrCommand);
 		if(songNameOrCommand.substring(0,4) === "next") {
